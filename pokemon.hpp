@@ -1,21 +1,15 @@
 #include <string>
 #include <vector>
-#include <iostream>
 
-class Pokemon;
-
-class Movimento {
-public:
-    std::string nome;
-
-    Movimento(std::string nome) : nome(nome) {}
-
-    virtual void atacar(Pokemon &usuario, Pokemon &alvo) const = 0;
-};
+class Movimento;
 
 
+// POKEMON class
+// ---------------------------------------------
+
+// Classe Pokemon
 class Pokemon {
-public:
+    // Atributos
     std::string nome;
     int vidaMax;
     int vida;
@@ -24,64 +18,51 @@ public:
     int ataqueEsp;
     int defesaEsp;
     int velocidade;
-
     std::vector<Movimento*> movimentos;
 
-
-    Pokemon(
-        const std::string nome, 
-        int vidaMax,
-        int ataque,
-        int defesa,
-        int ataqueEsp,
-        int defesaEsp,
-        int velocidade
-    ) : nome(nome),
-        vidaMax(vidaMax),
-        vida(vidaMax),
-        ataque(ataque),
-        defesa(defesa),
-        ataqueEsp(ataqueEsp),
-        defesaEsp(defesaEsp),
-        velocidade(velocidade)
-    {}
-
-    void print() {
-        std::cout << nome << " " << vida << "/" << vidaMax << std::endl;
-        std::cout << "Ataque: " << ataque << std::endl;
-        std::cout << "Defesa: " << defesa << std::endl;
-        std::cout << "Atq Sp: " << ataqueEsp << std::endl;
-        std::cout << "Def Sp: " << defesaEsp << std::endl;
-        std::cout << "Veloci: " << velocidade << std::endl;
-    }
-
-    void receberDano(int dano) {
-        int danoRecebido = dano - defesa;
-        if (danoRecebido <= 0)
-            return;
-        vida -= danoRecebido;
-        if (vida < 0)
-            vida = 0;
-    }
-
-    void adicionarMovimento(Movimento *movimento) {
-        movimentos.push_back(movimento);
-    }
-
-    void ataca(Pokemon &alvo, int numAtaque) {
-        this->movimentos[numAtaque]->atacar(*this, alvo);
-    }
-};
-
-
-
-
-class Tackle : public Movimento {
 public:
-    Tackle() : Movimento("Tackle") {}
+    // Construtor Bruto
+    Pokemon( const std::string nome, int vidaMax, int ataque, int defesa, int ataqueEsp, int defesaEsp, int velocidade);
 
-    void atacar(Pokemon &usuario, Pokemon &alvo) const override {
-        int dano = usuario.ataque;
-        alvo.receberDano(dano);
-    }
+    // Construtor via Json
+    Pokemon(const std::string filename);
+
+
+    // Imprime nome e status de um pokemon no console
+    void print() const;
+
+    // Adiciona um movimento à lista de movimentos do pokemon
+    void aprender(Movimento *movimento);
+    void aprender(std::string nome_movimento);
+
+    // Recebe um dano. Pode ser amortecido pela defesa.
+    void receberDano(int dano);
+
+    // Executa um ataque a um alvo
+    void ataca(Pokemon &alvo, int numAtaque);
+
+
+    // Getters
+    //------------
+    std::string getNome() const;
+
+    int getVida() const;
+
+    int getVidaMax() const;
+
+    int getAtaque() const;
+
+    int getDefesa() const;
+
+    int getAtaqueEsp() const;
+
+    int getDefesaEsp() const;
+
+    int getVelocidade() const;
+
+    std::vector<Movimento*> getMovimentos() const;
 };
+
+
+
+

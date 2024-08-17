@@ -1,0 +1,10 @@
+{
+    "nome": "Charmander",
+    "vidaMax": 10,
+    "ataque": 15,
+    "defesa": 12,
+    "ataqueEsp": 13,
+    "defesaEsp": 14,
+    "velocidade": 15,
+    "movimentos": ["tackle", "ember"]
+}

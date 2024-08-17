@@ -1,37 +1,46 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <json.hpp>
 #include "pokemon.hpp"
+#include "movimento.hpp"
 using namespace std;
 
 
-
-
-
-
-Pokemon charmander("Charmander", 10, 15, 12, 13, 14, 15);
-Pokemon squirtle("Squirtle", 15, 14, 13, 12, 11, 10);
-
-
-
 void printUI(const Pokemon &p1, const Pokemon &p2) {
-    cout << p1.nome << " " << p1.vida << "/" << p1.vidaMax << " | " << p2.nome << " " << p2.vida << "/" << p2.vidaMax << endl;
-    cout << "Atq: " << p1.ataque << " | " << "Atq: "<< p2.ataque << endl;
-    cout << "Def: " << p1.defesa << " | " << "Def: "<< p2.defesa << endl;
-    cout << "AtS: " << p1.ataqueEsp << " | " << "AtS: "<< p2.ataqueEsp << endl;
-    cout << "DfS: " << p1.defesaEsp << " | " << "DfS: "<< p2.defesaEsp << endl;
-    cout << "Vel: " << p1.velocidade << " | " << "Vel: "<< p2.velocidade << endl;
-    cout << "Mov: " << p1.movimentos[0]->nome << " | " << "Mov: " << p2.movimentos[0]->nome << endl;
+    cout << p1.getNome() << " " << p1.getVida() << "/" << p1.getVidaMax() << " | " << p2.getNome() << " " << p2.getVida() << "/" << p2.getVidaMax() << endl;
+    cout << "Atq: " << p1.getAtaque() << " | " << "Atq: "<< p2.getAtaque() << endl;
+    cout << "Def: " << p1.getDefesa() << " | " << "Def: "<< p2.getDefesa() << endl;
+    cout << "AtS: " << p1.getAtaqueEsp() << " | " << "AtS: "<< p2.getAtaqueEsp() << endl;
+    cout << "DfS: " << p1.getDefesaEsp() << " | " << "DfS: "<< p2.getDefesaEsp() << endl;
+    cout << "Vel: " << p1.getVelocidade() << " | " << "Vel: "<< p2.getVelocidade() << endl;
+    
+    // Printar os Movimentos
+    vector<Movimento*> movimentosP1 = p1.getMovimentos();
+    vector<Movimento*> movimentosP2 = p2.getMovimentos();
+
+    int num_max_movimentos = max(movimentosP1.size(), movimentosP2.size());
+
+
+    for (int i=0; i < num_max_movimentos; i++) {
+        if (i < movimentosP1.size())
+            cout << "Mov: " << p1.getMovimentos()[i]->getNome();
+        else
+            cout << "              ";
+
+        cout << " | ";
+
+        if (i < movimentosP2.size())
+            cout << "Mov: " << p2.getMovimentos()[i]->getNome();
+        cout << endl;
+    }
     cout << endl;
 }
 
 int main() {
-    Tackle tackle;
+    Movimento::iniciarMovimentos();
 
-    charmander.adicionarMovimento(&tackle);
-    squirtle.adicionarMovimento(&tackle);
-
+    Pokemon charmander("pokemons/charmander.json");
+    Pokemon squirtle("pokemons/squirtle.json");
     printUI(charmander, squirtle);
 
     charmander.ataca(squirtle, 0);

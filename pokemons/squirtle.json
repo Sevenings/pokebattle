@@ -1,0 +1,10 @@
+{
+    "nome": "Squirtle",
+    "vidaMax": 15,
+    "ataque": 14,
+    "defesa": 13,
+    "ataqueEsp": 12,
+    "defesaEsp": 11,
+    "velocidade": 10,
+    "movimentos": ["tackle", "water gun"]
+}
