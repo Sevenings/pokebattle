@@ -7,7 +7,7 @@ Parte das minhas tentativas de fazer um jogo de combate em turnos. Este daqui é
 Features implementadas:
  - [x] Pokemons são carregados a partir de um JSON.
  - [x] É fácil de adicionar novos Movimentos ao jogo.
- - [ ] O arquivo movimento.cpp não necessita ser compilado antes da main.cpp
+ - [x] O arquivo movimento.cpp não necessita ser compilado antes da main.cpp
  - [ ] Só existe uma instância global de cada movimento.
  - [ ] Os Movimentos não precisam estar hard-coded no código.
  - [ ] Ser jogável.
