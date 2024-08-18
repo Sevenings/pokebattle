@@ -1,4 +1,4 @@
-#include "pokemon.hpp"
+#include "personagem.hpp"
 #include "movimento.hpp"
 #include <iostream>
 #include <fstream>
@@ -12,7 +12,7 @@ using json = nlohmann::json;
 // POKEMON class ---------------------------------------------
 
 // Construtor Bruto
-Pokemon::Pokemon(
+Personagem::Personagem(
     const std::string nome, 
     int vidaMax,
     int ataque,
@@ -32,7 +32,7 @@ Pokemon::Pokemon(
 
 
 // Construtor via Json
-Pokemon::Pokemon(const std::string filename) {
+Personagem::Personagem(const std::string filename) {
     // Lê o arquivo json
     std::ifstream f(filename);
     json data = json::parse(f);
@@ -55,7 +55,7 @@ Pokemon::Pokemon(const std::string filename) {
 
 
 // Imprime nome e status de um pokemon no console
-void Pokemon::print() const {
+void Personagem::print() const {
     std::cout << nome << " " << vida << "/" << vidaMax << std::endl;
     std::cout << "Ataque: " << ataque << std::endl;
     std::cout << "Defesa: " << defesa << std::endl;
@@ -65,7 +65,7 @@ void Pokemon::print() const {
 }
 
 // Recebe um dano. Pode ser amortecido pela defesa.
-void Pokemon::receberDano(int dano) {
+void Personagem::receberDano(int dano) {
     int danoRecebido = dano - defesa;
     if (danoRecebido <= 0)
         return;
@@ -76,19 +76,20 @@ void Pokemon::receberDano(int dano) {
 
 
 // Adiciona um movimento à lista de movimentos do pokemon
-void Pokemon::aprender(Movimento *movimento) {
+void Personagem::aprender(Movimento *movimento) {
     movimentos.push_back(movimento);
 }
 
-void Pokemon::aprender(std::string nome_movimento) {
+void Personagem::aprender(std::string nome_movimento) {
     Movimento* movimento = Movimento::get(nome_movimento);
     if (movimento != nullptr)
         aprender(movimento);
 }
 
 
+
 // Executa um ataque a um alvo
-void Pokemon::ataca(Pokemon &alvo, int numAtaque) {
+void Personagem::ataca(Personagem &alvo, int numAtaque) {
     this->movimentos[numAtaque]->atacar(*this, alvo);
 }
 
@@ -96,21 +97,21 @@ void Pokemon::ataca(Pokemon &alvo, int numAtaque) {
 // Getters
 //------------
 
-std::string Pokemon::getNome() const { return nome; }
+std::string Personagem::getNome() const { return nome; }
 
-int Pokemon::getVida() const { return vida; }
+int Personagem::getVida() const { return vida; }
 
-int Pokemon::getVidaMax() const { return vidaMax; }
+int Personagem::getVidaMax() const { return vidaMax; }
 
-int Pokemon::getAtaque() const { return ataque; }
+int Personagem::getAtaque() const { return ataque; }
 
-int Pokemon::getDefesa() const { return defesa; }
+int Personagem::getDefesa() const { return defesa; }
 
-int Pokemon::getAtaqueEsp() const { return ataqueEsp; }
+int Personagem::getAtaqueEsp() const { return ataqueEsp; }
 
-int Pokemon::getDefesaEsp() const { return defesaEsp; }
+int Personagem::getDefesaEsp() const { return defesaEsp; }
 
-int Pokemon::getVelocidade() const { return velocidade; }
+int Personagem::getVelocidade() const { return velocidade; }
 
-std::vector<Movimento*> Pokemon::getMovimentos() const { return movimentos; }
+std::vector<Movimento*> Personagem::getMovimentos() const { return movimentos; }
 

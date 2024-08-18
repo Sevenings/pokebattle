@@ -1,12 +1,10 @@
 #include <iostream>
-#include <string>
-#include <vector>
-#include "pokemon.hpp"
-#include "movimento.hpp"
+#include "gamecore/personagem.hpp"
+#include "gamecore/movimento.hpp"
 using namespace std;
 
 
-void printUI(const Pokemon &p1, const Pokemon &p2) {
+void printUI(const Personagem &p1, const Personagem &p2) {
     cout << p1.getNome() << " " << p1.getVida() << "/" << p1.getVidaMax() << " | " << p2.getNome() << " " << p2.getVida() << "/" << p2.getVidaMax() << endl;
     cout << "Atq: " << p1.getAtaque() << " | " << "Atq: "<< p2.getAtaque() << endl;
     cout << "Def: " << p1.getDefesa() << " | " << "Def: "<< p2.getDefesa() << endl;
@@ -39,11 +37,11 @@ void printUI(const Pokemon &p1, const Pokemon &p2) {
 int main() {
     Movimento::iniciarMovimentos();
 
-    Pokemon charmander("pokemons/charmander.json");
-    Pokemon squirtle("pokemons/squirtle.json");
+    Personagem charmander("pokemons/charmander.json");
+    Personagem squirtle("pokemons/squirtle.json");
     printUI(charmander, squirtle);
 
-    charmander.ataca(squirtle, 0);
+    squirtle.ataca(charmander, 2);
 
     printUI(charmander, squirtle);
 

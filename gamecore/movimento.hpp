@@ -1,7 +1,7 @@
 #include <functional>
 #include <map>
 #include <string>
-class Pokemon;
+class Personagem;
 
 // MOVIMENTO class
 // ---------------------------------------------
@@ -11,15 +11,15 @@ class Movimento {
 private:
     std::string nome;
     static std::map<std::string, Movimento*> tabelaMovimentos;
-    std::function<void (Pokemon &u, Pokemon &a)> atacar_impl;
+    std::function<void (Personagem &u, Personagem &a)> atacar_impl;
 
 public:
 
     // Construtor
-    Movimento(const std::string &nome, std::function<void (Pokemon &u, Pokemon &a)> atacar);
+    Movimento(const std::string &nome, std::function<void (Personagem &u, Personagem &a)> atacar);
 
     // Ataque
-    void atacar(Pokemon &usuario, Pokemon &alvo);
+    void atacar(Personagem &usuario, Personagem &alvo);
 
     // Acessa a tabela de movimentos
     static Movimento* get(const std::string &nome);

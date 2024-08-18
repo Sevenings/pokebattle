@@ -1,10 +1,11 @@
 # C++ Makefile
 MAIN=main.cpp
 PROJECT_NAME=pokebattle
-SRCS=movimento.cpp listaMovimentos.cpp pokemon.cpp 
+SRCS=gamecore/*
+INCLUDE=-Iinclude
 
 compile: $(MAIN)
-	g++ -o $(PROJECT_NAME) $(MAIN) $(SRCS)  
+	g++ -o $(PROJECT_NAME) $(MAIN) $(SRCS) $(INCLUDE)
 
 run: $(PROJECT_NAME)
 	./$(PROJECT_NAME)

@@ -6,5 +6,5 @@
     "ataqueEsp": 12,
     "defesaEsp": 11,
     "velocidade": 10,
-    "movimentos": ["tackle", "water gun"]
+    "movimentos": ["tackle", "water gun", "hadouken"]
 }

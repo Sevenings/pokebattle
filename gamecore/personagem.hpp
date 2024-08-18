@@ -7,8 +7,8 @@ class Movimento;
 // POKEMON class
 // ---------------------------------------------
 
-// Classe Pokemon
-class Pokemon {
+// Classe Personagem
+class Personagem {
     // Atributos
     std::string nome;
     int vidaMax;
@@ -22,10 +22,10 @@ class Pokemon {
 
 public:
     // Construtor Bruto
-    Pokemon( const std::string nome, int vidaMax, int ataque, int defesa, int ataqueEsp, int defesaEsp, int velocidade);
+    Personagem( const std::string nome, int vidaMax, int ataque, int defesa, int ataqueEsp, int defesaEsp, int velocidade);
 
     // Construtor via Json
-    Pokemon(const std::string filename);
+    Personagem(const std::string filename);
 
 
     // Imprime nome e status de um pokemon no console
@@ -39,7 +39,7 @@ public:
     void receberDano(int dano);
 
     // Executa um ataque a um alvo
-    void ataca(Pokemon &alvo, int numAtaque);
+    void ataca(Personagem &alvo, int numAtaque);
 
 
     // Getters

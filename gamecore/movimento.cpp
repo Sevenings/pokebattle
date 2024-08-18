@@ -1,5 +1,5 @@
 #include "movimento.hpp"
-#include "pokemon.hpp"
+#include "personagem.hpp"
 #include <functional>
 #include <stdexcept>
 #include <string>
@@ -25,7 +25,7 @@ std::map<std::string, Movimento*> Movimento::tabelaMovimentos;
 
 
 // Construtor. Instancia um novo Movimento e o Registra na Tabela de Movimentos
-Movimento::Movimento(const std::string &nome, std::function<void (Pokemon &u, Pokemon &a)> atacar_impl) : 
+Movimento::Movimento(const std::string &nome, std::function<void (Personagem &u, Personagem &a)> atacar_impl) : 
     nome(nome), atacar_impl(atacar_impl)  // Inicializa as variáveis
 {
     // Verifica se esse movimento já foi registrado
@@ -55,7 +55,7 @@ Movimento* Movimento::get(const std::string &nome) {
 }
 
 
-void Movimento::atacar(Pokemon &usuario, Pokemon &alvo) {
+void Movimento::atacar(Personagem &usuario, Personagem &alvo) {
     atacar_impl(usuario, alvo);
 }
 
