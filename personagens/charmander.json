@@ -1,0 +1,9 @@
+{
+    "nome": "Charmander",
+    "vidaMax": 10,
+    "forca": 15,
+    "classe_de_armadura": 12,
+    "inteligencia": 13,
+    "destreza": 15,
+    "movimentos": ["tackle", "ember"]
+}

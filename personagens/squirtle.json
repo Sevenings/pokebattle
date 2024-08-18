@@ -1,0 +1,9 @@
+{
+    "nome": "Squirtle",
+    "vidaMax": 15,
+    "forca": 14,
+    "classe_de_armadura": 13,
+    "inteligencia": 12,
+    "destreza": 10,
+    "movimentos": ["tackle", "water gun", "hadouken"]
+}
