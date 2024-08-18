@@ -8,8 +8,8 @@ using namespace std;
 int main() {
     Movimento::iniciarMovimentos();
 
-    Personagem charmander("pokemons/charmander.json");
-    Personagem squirtle("pokemons/squirtle.json");
+    Personagem charmander("personagens/charmander.json");
+    Personagem squirtle("personagens/squirtle.json");
 
     CombateA1 combate;
     
