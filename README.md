@@ -24,6 +24,6 @@ Features implementadas:
      6. Ter uma parte do turno que é aplicado os efeitos de veneno.
      7. Ter barra de mana.
      8. Conseguir usar equipamentos de uma mochila.....
-     9. ter um calculo de dano e defesa descente tbn
+     9. ter um calculo de dano e defesa descente tbm
  - [ ] Itens.
 
