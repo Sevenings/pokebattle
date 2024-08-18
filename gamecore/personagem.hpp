@@ -1,3 +1,6 @@
+#ifndef H_PERSONAGEM
+#define H_PERSONAGEM
+
 #include <string>
 #include <vector>
 
@@ -13,16 +16,16 @@ class Personagem {
     std::string nome;
     int vidaMax;
     int vida;
-    int ataque;
-    int defesa;
-    int ataqueEsp;
-    int defesaEsp;
-    int velocidade;
+    int forca;
+    int classe_de_armadura;
+    int inteligencia;
+    int destreza;
     std::vector<Movimento*> movimentos;
 
 public:
     // Construtor Bruto
-    Personagem( const std::string nome, int vidaMax, int ataque, int defesa, int ataqueEsp, int defesaEsp, int velocidade);
+    Personagem( const std::string nome, int vidaMax, int forca, int classe_de_armadura, int inteligencia, int destreza);
+
 
     // Construtor via Json
     Personagem(const std::string filename);
@@ -50,19 +53,23 @@ public:
 
     int getVidaMax() const;
 
-    int getAtaque() const;
+    bool vivo() const;
 
-    int getDefesa() const;
+    int getForca() const;
 
-    int getAtaqueEsp() const;
+    int getClasseDeArmadura() const;
 
-    int getDefesaEsp() const;
+    int getInteligencia() const;
 
-    int getVelocidade() const;
+    int getDestreza() const;
 
     std::vector<Movimento*> getMovimentos() const;
+
+    int getNumMovimentos() const;
+
+    int getIniciativa() const;
+
 };
 
 
-
-
+#endif

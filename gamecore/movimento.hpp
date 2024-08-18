@@ -1,3 +1,6 @@
+#ifndef H_MOVIMENTO
+#define H_MOVIMENTO
+
 #include <functional>
 #include <map>
 #include <string>
@@ -36,4 +39,4 @@ public:
 };
 
 
-
+#endif // !H_MOVIMENTO

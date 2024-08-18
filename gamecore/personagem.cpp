@@ -15,18 +15,16 @@ using json = nlohmann::json;
 Personagem::Personagem(
     const std::string nome, 
     int vidaMax,
-    int ataque,
-    int defesa,
-    int ataqueEsp,
-    int defesaEsp,
-    int velocidade
+    int forca,
+    int classe_de_armadura,
+    int inteligencia,
+    int destreza
 ) : nome(nome),
     vidaMax(vidaMax),
-    vida(vidaMax), ataque(ataque),
-    defesa(defesa),
-    ataqueEsp(ataqueEsp),
-    defesaEsp(defesaEsp),
-    velocidade(velocidade)
+    vida(vidaMax), forca(forca),
+    classe_de_armadura(classe_de_armadura),
+    inteligencia(inteligencia),
+    destreza(destreza)
 {}
 
 
@@ -41,11 +39,10 @@ Personagem::Personagem(const std::string filename) {
     nome = data["nome"];
     vidaMax = data["vidaMax"];
     vida = vidaMax;
-    ataque = data["ataque"];
-    defesa = data["defesa"];
-    ataqueEsp = data["ataqueEsp"];
-    defesaEsp = data["defesaEsp"];
-    velocidade = data["velocidade"];
+    forca = data["forca"];
+    classe_de_armadura = data["classe_de_armadura"];
+    inteligencia = data["inteligencia"];
+    destreza = data["destreza"];
 
     std::vector<std::string> nomes_movimentos = data["movimentos"];
     for (std::string nome_movimento : nomes_movimentos) {
@@ -57,16 +54,15 @@ Personagem::Personagem(const std::string filename) {
 // Imprime nome e status de um pokemon no console
 void Personagem::print() const {
     std::cout << nome << " " << vida << "/" << vidaMax << std::endl;
-    std::cout << "Ataque: " << ataque << std::endl;
-    std::cout << "Defesa: " << defesa << std::endl;
-    std::cout << "Atq Sp: " << ataqueEsp << std::endl;
-    std::cout << "Def Sp: " << defesaEsp << std::endl;
-    std::cout << "Veloci: " << velocidade << std::endl;
+    std::cout << "Ataque: " << forca << std::endl;
+    std::cout << "Defesa: " << classe_de_armadura << std::endl;
+    std::cout << "Atq Sp: " << inteligencia << std::endl;
+    std::cout << "Veloci: " << destreza << std::endl;
 }
 
 // Recebe um dano. Pode ser amortecido pela defesa.
 void Personagem::receberDano(int dano) {
-    int danoRecebido = dano - defesa;
+    int danoRecebido = dano - classe_de_armadura;
     if (danoRecebido <= 0)
         return;
     vida -= danoRecebido;
@@ -103,15 +99,18 @@ int Personagem::getVida() const { return vida; }
 
 int Personagem::getVidaMax() const { return vidaMax; }
 
-int Personagem::getAtaque() const { return ataque; }
+bool Personagem::vivo() const { return vida > 0; }
 
-int Personagem::getDefesa() const { return defesa; }
+int Personagem::getForca() const { return forca; }
 
-int Personagem::getAtaqueEsp() const { return ataqueEsp; }
+int Personagem::getClasseDeArmadura() const { return classe_de_armadura; }
 
-int Personagem::getDefesaEsp() const { return defesaEsp; }
+int Personagem::getInteligencia() const { return inteligencia; }
 
-int Personagem::getVelocidade() const { return velocidade; }
+int Personagem::getDestreza() const { return destreza; }
 
 std::vector<Movimento*> Personagem::getMovimentos() const { return movimentos; }
 
+int Personagem::getNumMovimentos() const { return movimentos.size(); }
+
+int Personagem::getIniciativa() const { return destreza; }
