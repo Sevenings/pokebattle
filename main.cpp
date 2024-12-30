@@ -1,25 +1,12 @@
-#include <iostream>
-#include "gamecore/personagem.hpp"
+#include <gtkmm.h>
+#include "gui/PokeViewerWindow.hpp"
 #include "gamecore/movimento.hpp"
-#include "gamecore/combate.hpp"
-using namespace std;
 
 
-int main() {
+int main(int argc, char* argv[])
+{
     Movimento::iniciarMovimentos();
+    auto app = Gtk::Application::create("sevenings.pokebattle");
 
-    Personagem charmander("personagens/charmander.json");
-    Personagem squirtle("personagens/squirtle.json");
-
-    CombateA1 combate;
-    
-    Personagem *vencedor = combate.iniciar(charmander, squirtle);
-
-    if (vencedor == nullptr) {
-        cout << "RESULTADO: Empate!" << endl;
-        return 0;
-    }
-    cout << "RESULTADO: " << vencedor->getNome() << " venceu!" << endl;
-    return 0;
+    return app->make_window_and_run<PokeViewerWindow>(argc, argv);
 }
-

@@ -1,17 +1,10 @@
-# C++ Makefile
-MAIN=main.cpp
-PROJECT_NAME=pokebattle
-SRCS=gamecore/*
-INCLUDE=-Iinclude
+setup:
+	mkdir build
+	meson setup build
 
-compile: $(MAIN)
-	g++ -o $(PROJECT_NAME) $(MAIN) $(SRCS) $(INCLUDE)
+compile:
+	cd build && meson compile
 
-run: $(PROJECT_NAME)
-	./$(PROJECT_NAME)
+run:
+	./build/PokeViewerGUI
 
-debug-compile: $(MAIN)
-	g++ -g -o $(PROJECT_NAME) $(MAIN) $(SRCS)
-
-debug: $(PROJECT_NAME)
-	gdb $(PROJECT_NAME) core

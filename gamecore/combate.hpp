@@ -1,13 +1,16 @@
 #include "personagem.hpp"
 #include "movimento.hpp"
+#include "../events/eventbus.hpp"
 #include <cstdlib>
 #include <iostream>
 using namespace std;
 
 
 class ICombate {
-    public:
-        virtual Personagem* iniciar(Personagem &p1, Personagem &p2) = 0;
+public:
+    virtual Personagem* iniciar(Personagem &p1, Personagem &p2) = 0;
+
+    EventBus event_bus;
 };
 
 
@@ -89,7 +92,7 @@ private:
     void printUI(const Personagem &p1, const Personagem &p2) {
         cout << p1.getNome() << " " << p1.getVida() << "/" << p1.getVidaMax() << " | " << p2.getNome() << " " << p2.getVida() << "/" << p2.getVidaMax() << endl;
         cout << "For: " << p1.getForca() << " | " << "For: "<< p2.getForca() << endl;
-        cout << "Arm: " << p1.getClasseDeArmadura() << " | " << "Arm"<< p2.getClasseDeArmadura() << endl;
+        cout << "Arm: " << p1.getClasseDeArmadura() << " | " << "Arm:"<< p2.getClasseDeArmadura() << endl;
         cout << "Int: " << p1.getInteligencia() << " | " << "Int: "<< p2.getInteligencia() << endl;
         cout << "Des: " << p1.getDestreza() << " | " << "Des: "<< p2.getDestreza() << endl;
         

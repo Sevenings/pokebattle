@@ -5,5 +5,5 @@
     "classe_de_armadura": 13,
     "inteligencia": 12,
     "destreza": 10,
-    "movimentos": ["tackle", "water gun", "hadouken"]
+    "movimentos": ["tackle", "water gun", "hadouken", "tackle"]
 }
